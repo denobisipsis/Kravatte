@@ -12,13 +12,13 @@
 
 	// Test Vectors
 
-	$server = "http://raw.githubusercontent.com/inmcm/kravatte/master/tests";
+	$server   = "http://raw.githubusercontent.com/inmcm/kravatte/master/tests";
 	
 	$fvectors = ["mac"];
 
 	foreach ($fvectors as $f)
 		{
-		$count = 0;
+		$count   = 0;
 		echo "Kravatte $f ";
 		$vectors = file_get_contents("$server/test_kravatte_$f.py");
 		$vectors = explode("def test_",$vectors);
@@ -45,7 +45,7 @@
 
 	foreach ($fvectors as $f)
 		{
-		$count = 0;
+		$count   = 0;
 		echo "Kravatte $f ";
 		$vectors = file_get_contents("$server/test_kravatte_$f.py");
 		$vectors = explode("def test_kravatte",$vectors);
@@ -76,15 +76,15 @@
 
 	foreach ($fvectors as $f)
 		{
-		$count=0;
+		$count   = 0;
 		echo "Kravatte $f ";
-		$vectors=file_get_contents("$server/test_kravatte_$f.py");
-		$vectors=explode("def test_kravatte",$vectors);
+		$vectors = file_get_contents("$server/test_kravatte_$f.py");
+		$vectors = explode("def test_kravatte",$vectors);
 
 		foreach (array_slice($vectors,1) as $vector)
 			{
 			$count++;	
-			$type=explode('(',explode('SANSE_',$vector)[1])[0];
+			$type = explode('(',explode('SANSE_',$vector)[1])[0];
 		
 			$zk			= xtrae("my_key",$vector);			    
 			$zm			= xtrae("my_message",$vector);
@@ -106,10 +106,10 @@
 
 	foreach ($fvectors as $f)
 		{
-		$count=0;
+		$count   = 0;
 		echo "Kravatte $f ";
-		$vectors=file_get_contents("$server/test_kravatte_$f.py");
-		$vectors=explode("def test_kravatte",$vectors);
+		$vectors = file_get_contents("$server/test_kravatte_$f.py");
+		$vectors = explode("def test_kravatte",$vectors);
 
 		foreach (array_slice($vectors,2) as $vector)
 			{
@@ -135,15 +135,15 @@
 
 	foreach ($fvectors as $f)
 		{
-		$count=0;
+		$count = 0;
 		echo "Kravatte $f ";
-		$vectors=file_get_contents("$server/test_kravatte_$f.py");
-		$vectors=explode("def test_kravatte",$vectors);
+		$vectors = file_get_contents("$server/test_kravatte_$f.py");
+		$vectors = explode("def test_kravatte",$vectors);
 
 		foreach (array_slice($vectors,1) as $vector)
 			{
 			$count++;	
-			$type=explode('(',explode('WBC_AE_',$vector)[1])[0];		
+			$type = explode('(',explode('WBC_AE_',$vector)[1])[0];		
 
 			$zk			= xtrae("my_key",$vector);			    
 			$zm			= xtrae("my_message",$vector);
@@ -161,8 +161,8 @@
 		}
 				
 	echo "Kravatte oracle ";
-	$vectors=file_get_contents("$server/test_kravatte_oracle.py");
-	$vectors=explode("def test_kravatte",$vectors);
+	$vectors = file_get_contents("$server/test_kravatte_oracle.py");
+	$vectors = explode("def test_kravatte",$vectors);
 
 	foreach (array_slice($vectors,1) as $vector)
 		{	
