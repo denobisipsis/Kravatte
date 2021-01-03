@@ -330,7 +330,7 @@ Kravatte
 	{
 	self::k_key($key);
 	self::reset_state();	
-    	self::kcollect($message,$this->roll_key);    
+    	self::kcollect($message);    
 	self::kdigest($output_size);    	
     	return bin2hex($this->digest);
         }
