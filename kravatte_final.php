@@ -97,14 +97,24 @@ Keccap
 	return $lane;		
 	}
 	
-    function SHR_64($x,$n)
-    	{
-	// mimics python numpy >>
-	
-	$resto = chr(ord($x[7]) >> $n);
-	$x     = self::rotLeft64($x,64-$n);				
-	$x[7]  = $x[7] & $resto;
-	return $x;	    
+    function SHR_64($lane, $n) 
+    	{ 						    	
+	$biLeft     = 8 - $n;
+	$mask       = 2**$n-1;
+        $lane       = unpack("C*",$lane);
+	  
+	$char     = $lane[8];	  				
+	$lane[8]  = chr($char >> $n);
+	$carry    = $char & $mask;
+							
+	for ($i = 7; $i > 0; $i--) 
+		{
+		$char     = $lane[$i];				
+		$lane[$i] = chr(($char >> $n) | ($carry << $biLeft));
+		$carry    = $char & $mask;
+		}
+
+	return implode($lane);		
 	}
 		    			       
     function Theta(&$lanes)
