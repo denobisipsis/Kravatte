@@ -13,7 +13,7 @@ https://eprint.iacr.org/2016/1188.pdf
 
 It pass all tests from https://github.com/inmcm/kravatte/tree/master/tests
 
-2021 @denobispsis
+2021 @denobisipsis
 
 $x=new Kravatte;
 
