@@ -101,20 +101,22 @@ Keccap
     	{ 						    	
 	$biLeft     = 8 - $n;
 	$mask       = 2**$n-1;
-        $lane       = unpack("C*",$lane);
+        $l 	    = unpack("C*",$lane);
 	  
-	$char     = $lane[8];	  				
-	$lane[8]  = chr($char >> $n);
+	$char     = $l[8];	  				
+	$lane[7]  = chr($char >> $n);
 	$carry    = $char & $mask;
 							
-	for ($i = 7; $i > 0; $i--) 
+	for ($i = 7; $i > 1; $i--) 
 		{
-		$char     = $lane[$i];				
-		$lane[$i] = chr(($char >> $n) | ($carry << $biLeft));
-		$carry    = $char & $mask;
+		$char       = $l[$i];				
+		$lane[$i-1] = chr(($char >> $n) | ($carry << $biLeft));
+		$carry      = $char & $mask;
 		}
-
-	return implode($lane);		
+				
+	$lane[0] = chr(($l[1] >> $n) | ($carry << $biLeft));
+		
+	return $lane;	
 	}
 		    			       
     function Theta(&$lanes)
